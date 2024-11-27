@@ -1,0 +1,41 @@
+1. Produto
+    GET /produtos: Retorna todos os produtos.
+    GET /produtos/:id: Retorna um produto específico pelo ID.
+    POST /produtos: Cria um novo produto.
+    PUT /produtos/:id: Atualiza um produto específico pelo ID.
+    DELETE /produtos/:id: Deleta um produto específico pelo ID.
+
+2. Fornecedor
+    GET /fornecedores: Retorna todos os fornecedores.
+    GET /fornecedores/:id: Retorna um fornecedor específico pelo ID.
+    POST /fornecedores: Cria um novo fornecedor.
+    PUT /fornecedores/:id: Atualiza um fornecedor específico pelo ID.
+    DELETE /fornecedores/:id: Deleta um fornecedor específico pelo ID.
+
+3. Pedido de Compra
+    GET /pedidos-compra: Retorna todos os pedidos de compra.
+    GET /pedidos-compra/:id: Retorna um pedido de compra específico pelo ID.
+    POST /pedidos-compra: Cria um novo pedido de compra.
+    PUT /pedidos-compra/:id: Atualiza um pedido de compra específico pelo ID.
+    DELETE /pedidos-compra/:id: Deleta um pedido de compra específico pelo ID.
+
+4. Movimento de Estoque
+    GET /movimentos-estoque: Retorna todos os movimentos de estoque.
+    GET /movimentos-estoque/:id: Retorna um movimento de estoque específico pelo ID.
+    POST /movimentos-estoque: Cria um novo movimento de estoque (entrada/saída).
+    PUT /movimentos-estoque/:id: Atualiza um movimento de estoque específico pelo ID.
+    DELETE /movimentos-estoque/:id: Deleta um movimento de estoque específico pelo ID.
+
+5. Venda
+    GET /vendas: Retorna todas as vendas.
+    GET /vendas/:id: Retorna uma venda específica pelo ID.
+    POST /vendas: Cria uma nova venda.
+    PUT /vendas/:id: Atualiza uma venda específica pelo ID.
+    DELETE /vendas/:id: Deleta uma venda específica pelo ID.
+
+6. Cliente
+    GET /clientes: Retorna todos os clientes.
+    GET /clientes/:id: Retorna um cliente específico pelo ID.
+    POST /clientes: Cria um novo cliente.
+    PUT /clientes/:id: Atualiza um cliente específico pelo ID.
+    DELETE /clientes/:id: Deleta um cliente específico pelo ID.

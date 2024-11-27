@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Produto {
+  id              Int      @id @default(autoincrement())
+  nome            String
+  descricao       String
+  categoria       String
+  marca           String
+  fornecedor      Fornecedor @relation(fields: [fornecedorId], references: [id])
+  fornecedorId    Int
+  precoCusto      Float
+  precoVenda      Float
+  tamanho         String
+  cor             String
+  material        String
+  quantidadeEstoque Int
+  imagem          String
+  movimentos      MovimentoEstoque[]
+  vendas          VendaProduto[]
+  pedidos         PedidoProduto[]
+}
+
+model Fornecedor {
+  id          Int      @id @default(autoincrement()) 
+  nome        String
+  cnpj        String
+  endereco    String
+  telefone    String
+  email       String
+  contato     String
+  produtos    Produto[]
+  pedidos     PedidoCompra[]
+}
+
+model PedidoCompra {
+  id                Int      @id @default(autoincrement()) 
+  dataPedido        DateTime
+  dataEntregaPrevista DateTime
+  status            String
+  produtos          PedidoProduto[] 
+  valorTotal        Float
+  fornecedor        Fornecedor @relation(fields: [fornecedorId], references: [id]) 
+  fornecedorId      Int
+}
+
+model PedidoProduto {
+  id            Int      @id @default(autoincrement()) 
+  quantidade    Int
+  produto       Produto  @relation(fields: [produtoId], references: [id])  
+  produtoId     Int
+  pedido        PedidoCompra @relation(fields: [pedidoId], references: [id])
+  pedidoId      Int
+}
+
+model MovimentoEstoque {
+  id            Int      @id @default(autoincrement())
+  tipoMovimento String
+  dataMovimento DateTime
+  quantidade    Int
+  produto       Produto   @relation(fields: [produtoId], references: [id]) 
+  produtoId     Int
+  observacoes   String?
+}
+
+model Venda {
+  id            Int      @id @default(autoincrement())
+  dataVenda     DateTime
+  cliente       Cliente   @relation(fields: [clienteId], references: [id]) 
+  clienteId     Int
+  vendedor      String
+  produtos      VendaProduto[]
+  valorTotal    Float
+  formaPagamento String
+}
+
+model VendaProduto {
+  id            Int      @id @default(autoincrement())
+  quantidade    Int
+  produto       Produto   @relation(fields: [produtoId], references: [id]) 
+  produtoId     Int
+  venda         Venda     @relation(fields: [vendaId], references: [id])  
+  vendaId       Int
+}
+
+model Cliente {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  cpf         String
+  endereco    String
+  telefone    String
+  email       String
+  vendas      Venda[]
+}
